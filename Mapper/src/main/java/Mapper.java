@@ -28,7 +28,8 @@ public class Mapper {
             "Category_talk:",
             "Portal:",
             "Wikipedia:",
-            "Wikipedia_talk:"
+            "Wikipedia_talk:",
+            "-"
     };
 
     private static String[] extensionFilter = {
@@ -74,37 +75,20 @@ public class Mapper {
             BufferedReader inputDataStream = new BufferedReader(new InputStreamReader(System.in));
 
             String inputLine;
-            StringTokenizer stringTokenizer;
 
             while ((inputLine = inputDataStream.readLine()) != null) {
 
+                String[] data = inputLine.split(" ");
                 String outputLine = "";
 
-                stringTokenizer = new StringTokenizer(inputLine);
-
-                if (stringTokenizer.hasMoreTokens()) {
-
-                    String language = stringTokenizer.nextToken();
-
-                    if (language.equals(languageCode)) {
-
-                        if (stringTokenizer.hasMoreTokens()) {
-
-                            String topic = stringTokenizer.nextToken();
-
-                            if (isTopicNameOk(topic)) {
-
-                                outputLine += topic;
-
-                                if (stringTokenizer.hasMoreTokens()) {
-
-                                    outputLine = outputLine + "\t" + stringTokenizer.nextToken();
-                                    System.out.println(outputLine);
-                                }
-                            }
+                if (data.length == 4) {
+                    if (data[0].equals(languageCode)) {
+                        if (isTopicNameOk(data[1])) {
+                            outputLine += data[1];
+                            outputLine = outputLine + "\t" + data[2];
+                            System.out.println(outputLine);
                         }
                     }
-
                 }
             }
 

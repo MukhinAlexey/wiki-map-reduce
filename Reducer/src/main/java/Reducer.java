@@ -1,17 +1,9 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.StringTokenizer;
+
 
 public class Reducer {
-
-    private static ArrayList<String> topicsArray = new ArrayList<String>();
-    private static ArrayList<String> countArray = new ArrayList<String>();
-
-    private static boolean filterUpperCase(String inputStr) {
-        return Character.isUpperCase(inputStr.charAt(0));
-    }
 
     public static void main(String args[]) {
 
@@ -24,6 +16,7 @@ public class Reducer {
 
             String inputLine;
             String title = "";
+
             while ((inputLine = inputDataStream.readLine()) != null) {
                 String[] lineParts = inputLine.split("\t");
                 title = lineParts[0];
